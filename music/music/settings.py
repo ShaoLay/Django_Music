@@ -37,14 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'comment',
-    'play',
-    'ranking',
-    'search',
-    'user',
     'index',
+    'ranking',
+    'user',
+    'play',
+    'search',
+    'comment',
+
 ]
 
+# 中间件
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
