@@ -1,0 +1,2 @@
+# Django_Music
+基于Python3_Django2.0_MySQL_PyCharm开发的音乐网站
