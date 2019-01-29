@@ -47,3 +47,15 @@ class Dynamic(models.Model):
         # 设置Admin界面的显示内容
         verbose_name = '歌曲动态'
         verbose_name_plural = '歌曲动态'
+
+# 歌曲点评表comment
+class Comment(models.Model):
+    comment_id = models.AutoField('序号', primary_key=True)
+    comment_text = models.CharField('内容', max_length=500)
+    comment_user = models.CharField('用户', max_length=20)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE,verbose_name='歌名')
+    comment_date = models.CharField('日期', max_length=50)
+    class Meta:
+        # 设置Admin界面的显示内容
+        verbose_name = '歌曲评论'
+        verbose_name_plural = '歌曲评论'
