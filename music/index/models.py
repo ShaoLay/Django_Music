@@ -35,3 +35,15 @@ class Song(models.Model):
         # 设置Admin界面的显示内容
         verbose_name = '歌曲信息'
         verbose_name_plural = '歌曲信息'
+
+# 歌曲动态表dynamic
+class Dynamic(models.Model):
+    dynamic_id = models.AutoField('序号', primary_key=True)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE, verbose_name='歌名')
+    dynamic_plays = models.IntegerField('播放次数')
+    dynamic_search = models.IntegerField('搜索次数')
+    dynamic_down = models.IntegerField('下载次数')
+    class Meta:
+        # 设置Admin界面的显示内容
+        verbose_name = '歌曲动态'
+        verbose_name_plural = '歌曲动态'
