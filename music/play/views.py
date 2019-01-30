@@ -37,3 +37,34 @@ def playView(request, song_id):
         dynamic_info = Dynamic(dynamic_plays=1, dynamic_search=0, dynamic_down=0, song_id=song_id)
         dynamic_info.save()
     return render(request, 'play.html', locals())
+
+# 歌曲下载
+def downloadView(request, song_id):
+    # 根据song_id查找歌曲信息
+    song_info = Song.objects.get(song_id=int(song_id))
+    # 添加下载次数
+    dynamic_info = Dynamic.objects.filter(song_id=int(song_id)).first()
+    # 判断歌曲动态信息是否存在，存在就在原来基础上加1
+    if dynamic_info:
+        dynamic_info.dynamic_down += 1
+        dynamic_info.save()
+    # 动态信息不存在则创建新的动态信息
+    else:
+        dynamic_info = Dynamic(dynamic_plays=0,dynamic_search=0,dynamic_down=1,song_id=song_id)
+        dynamic_info.save()
+    # 读取文件内容
+    file = 'static/songFile/' + song_info.song_file
+    def file_iterator(file, chunk_size=512):
+        with open(file, 'rb') as f:
+            while True:
+                c = f.read(chunk_size)
+                if c:
+                    yield c
+                else:
+                    break
+    # 将文件内容写入StreamingHttpResponse对象，并以字节流方式返回给用户，实现文件下载
+    filename = str(song_id) + '.mp3'
+    response = StreamingHttpResponse(file_iterator(file))
+    response['Content-Type'] = 'application/octet-stream'
+    response['Content-Disposition'] = 'attachment; filename="%s"' %(filename)
+    return response
