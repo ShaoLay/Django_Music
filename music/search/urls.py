@@ -13,9 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
-from . import views
-# 设置首页的URL地址信息
-urlpatterns = [
-    path('', views.indexView, name='index'),
-]
+# from django.urls import path
+# from . import views
+# urlpatterns = [
+#     path('<int:page>.html', views.searchView, name='search'),
+# ]

@@ -1,8 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-
 # 歌曲分类表label
 class Label(models.Model):
     label_id = models.AutoField('序号', primary_key=True)

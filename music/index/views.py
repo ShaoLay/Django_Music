@@ -1,7 +1,5 @@
 from django.shortcuts import render
-
 from .models import *
-# Create your views here.
 
 def indexView(request):
     # 热搜歌曲
@@ -16,4 +14,9 @@ def indexView(request):
     search_ranking = search_song[:6]
     down_ranking = Dynamic.objects.select_related('song').order_by('-dynamic_down').all()[:6]
     all_ranking = [search_ranking, down_ranking]
-    return render(request, 'index.html', locals())
+    return render(request, 'index.html',locals())
+
+
+# 自定义404和500的错误页面
+def page_not_found(request):
+    return render(request, 'error404.html', status=404)

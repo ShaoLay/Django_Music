@@ -17,9 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('index.urls')),
+    path('', include('index.urls')),
     # path('ranking.html', include('ranking.urls')),
     # path('play/', include('play.urls')),
     # path('comment/', include('comment.urls')),

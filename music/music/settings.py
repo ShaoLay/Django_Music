@@ -64,14 +64,13 @@ ROOT_URLCONF = 'music.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'index/templates'),
-            os.path.join(BASE_DIR, 'ranking/templates'),
-            os.path.join(BASE_DIR, 'user/templates'),
-            os.path.join(BASE_DIR, 'play/templates'),
-            os.path.join(BASE_DIR, 'comment/templates')
-        ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                  os.path.join(BASE_DIR, 'index/templates'),
+                  os.path.join(BASE_DIR, 'ranking/templates'),
+                  os.path.join(BASE_DIR, 'user/templates'),
+                  os.path.join(BASE_DIR, 'play/templates'),
+                  os.path.join(BASE_DIR, 'comment/templates'),
+                  ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,3 +138,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
