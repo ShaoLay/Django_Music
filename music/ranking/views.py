@@ -15,3 +15,4 @@ def rankingView(request):
     else:
         song_info = Dynamic.objects.select_related('song').order_by('-dynamic_plays').all()[:10]
     return render(request, 'ranking.html', locals())
+
